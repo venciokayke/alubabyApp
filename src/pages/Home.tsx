@@ -5,17 +5,12 @@ import './Home.css';
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader mode='ios'>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>AluBaby</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <ExploreContainer />
       </IonContent>
     </IonPage>
