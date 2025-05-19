@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
-import Onboarding from './pages/Onboarding'; 
+import Onboarding from './pages/Onboarding';  //importa o componente
 import { Storage } from '@ionic/storage';
 
 /* Core CSS required for Ionic components to work properly */
@@ -21,7 +21,7 @@ const App: React.FC = () => {
     (async () => {
       const storage = new Storage();
       await storage.create();
-      await storage.remove('onboardingShown'); // Uncomment para testes
+      await storage.remove('onboardingShown'); // 👈 remove o valor salvo (para testes)
       const seen = await storage.get('onboardingShown');
       setShowOnboarding(!seen);
       setChecking(false);
