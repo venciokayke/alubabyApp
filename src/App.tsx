@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
-import Onboarding from './pages/Onboarding';  //importa o componente
+import Onboarding from './pages/Onboarding'; //importa o componente
 import { Storage } from '@ionic/storage';
 
 /* Core CSS required for Ionic components to work properly */
@@ -48,11 +48,7 @@ const App: React.FC = () => {
 
           {/* rota raiz redireciona dinamicamente */}
           <Route exact path="/">
-            {showOnboarding ? (
-              <Redirect to="/onboarding" />
-            ) : (
-              <Redirect to="/home" />
-            )}
+            {showOnboarding ? <Redirect to="/onboarding" /> : <Redirect to="/home" />}
           </Route>
         </IonRouterOutlet>
       </IonReactRouter>
