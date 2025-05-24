@@ -1,63 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-import Onboarding from './pages/Onboarding';  //importa o componente
-import { Storage } from '@ionic/storage';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Home from "./components/Home";
+import Onboarding from "./components/Onboarding"; //importa o componente
 
-/* Core CSS required for Ionic components to work properly */
-import '@ionic/react/css/core.css';
-/* ... teus imports de CSS do Ionic ... */
-import './theme/variables.css';
-
-setupIonicReact();
-
-const App: React.FC = () => {
-  const [checking, setChecking] = useState(true);
-  const [showOnboarding, setShowOnboarding] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      const storage = new Storage();
-      await storage.create();
-      await storage.remove('onboardingShown'); // 👈 remove o valor salvo (para testes)
-      const seen = await storage.get('onboardingShown');
-      setShowOnboarding(!seen);
-      setChecking(false);
-    })();
-  }, []);
-
-  if (checking) {
-    return null; // ou um spinner, se preferir
-  }
-
+function App() {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          {showOnboarding && (
-            <Route exact path="/onboarding">
-              <Onboarding />
-            </Route>
-          )}
-
-          <Route exact path="/home">
-            <Home />
-          </Route>
-
-          {/* rota raiz redireciona dinamicamente */}
-          <Route exact path="/">
-            {showOnboarding ? (
-              <Redirect to="/onboarding" />
-            ) : (
-              <Redirect to="/home" />
-            )}
-          </Route>
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
+    <Router>
+      <Routes>
+        <Route path="/onboarding" element={<Onboarding />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Navigate to="/onboarding" replace />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
