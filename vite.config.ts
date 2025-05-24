@@ -1,18 +1,21 @@
-/// <reference types="vitest" />
-
-import legacy from '@vitejs/plugin-legacy'
-import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 8080,
+  },
   plugins: [
     react(),
-    legacy()
+    // You can add more plugins here, e.g.:
+    // mode === 'development' && someDevPlugin(),
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
-  }
-})
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+}));
