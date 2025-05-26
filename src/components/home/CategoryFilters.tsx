@@ -1,24 +1,20 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { Baby, HandPlatter, PercentSquare } from "lucide-react"; // Usando HandPlatter para 6+ meses e PercentSquare para Promoções
-
-// Ícones alternativos que podem ser mais adequados:
-// Para 6+ meses: Armchair, Chair, Highchair (se existir um ícone específico)
-// Para Promoções: BadgePercent, Tag
+import { Baby, ToyBrick, PercentSquare } from "lucide-react";
 
 const categories = [
   {
     name: "Recém-nascido",
-    icon: <Baby size={32} className="text-[#5DB3D3] mb-1" />,
+    icon: <Baby className="text-[#5DB3D3] mb-1 w-10 h-10" />,
   },
   {
     name: "6+ meses",
-    icon: <HandPlatter size={32} className="text-[#5DB3D3] mb-1" />,
-  }, // Exemplo, pode precisar de outro ícone
+    icon: <ToyBrick className="text-[#5DB3D3] mb-1 w-10 h-10" />,
+  },
   {
     name: "Promoções",
-    icon: <PercentSquare size={32} className="text-[#5DB3D3] mb-1" />,
-  }, // Exemplo
+    icon: <PercentSquare className="text-[#5DB3D3] mb-1 w-16 h-16" />,
+  },
 ];
 
 const CategoryFilters: React.FC = () => {

@@ -89,7 +89,6 @@ const SlideContent = ({
   mainImage: string;
 }) => (
   <div className="relative flex flex-col items-center justify-center h-full px-3 overflow-hidden">
-    {/* Background Images */}
     <div className="absolute inset-0 overflow-hidden">
       {images.map((image, index) => (
         <img
@@ -103,15 +102,15 @@ const SlideContent = ({
     </div>
 
     {/* Main Content */}
-    <h1 className="relative text-3xl font-bold text-[#5DB3D3] mb-2 text-center z-10 max-w-xs">
+    <h1 className="relative text-3xl font-bold text-[#5DB3D3] mt-10 mb-2 text-center z-10 max-w-xs">
       {title}
     </h1>
-    <p className="relative text-lg sm:text-xl text-[#6D6D6D] text-center z-10 w-4/5 max-w-sm">
+    <p className="relative text-base sm:text-xl text-[#6D6D6D] text-center z-10 w-4/5 max-w-sm">
       {subtitle}
     </p>
     <img
       src={mainImage}
-      className="relative w-4/5 max-w-xs sm:max-w-sm h-auto object-contain mb-0 z-10"
+      className="relative w-4/5 max-w-xs sm:max-w-sm h-auto object-contain mb-2 z-10"
       alt={`Ilustração: ${title}`}
     />
   </div>
@@ -123,7 +122,7 @@ const Onboarding: React.FC = () => {
 
   const finishOnboarding = () => {
     //localStorage.setItem("onboardingShown", "true");
-    navigate("/home", { replace: true });
+    navigate("/login", { replace: true });
   };
 
   const goToNextSlide = () => {
@@ -155,13 +154,13 @@ const Onboarding: React.FC = () => {
             <div className="flex justify-between items-center">
               <button
                 onClick={finishOnboarding}
-                className="text-[#5DB3D3] text-2xl underline font-medium ml-8"
+                className="text-[#5DB3D3] text-lg underline font-medium ml-8"
               >
                 Pular
               </button>
               <button
                 onClick={goToNextSlide}
-                className="bg-[#5DB3D3] text-white text-lg px-8 py-3 rounded-full shadow-lg 
+                className="bg-[#5DB3D3] text-white text-lg px-5 py-3 rounded-full shadow-lg 
                 hover:bg-[#4CA1C0] active:scale-95 transition-all"
               >
                 Próximo

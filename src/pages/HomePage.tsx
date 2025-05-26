@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/home/Header";
 import SearchBar from "../components/home/SearchBar";
 import CategoryFilters from "../components/home/CategoryFilters";
@@ -6,6 +6,15 @@ import PopularItems from "../components/home/PopularItems";
 import BottomNav from "../components/home/BottomNav";
 
 const HomePage: React.FC = () => {
+  const [userName, setUserName] = useState<string>("Usuário");
+
+  useEffect(() => {
+    const storedName = localStorage.getItem("userName");
+    if (storedName) {
+      const firstName = storedName.split(" ")[0];
+      setUserName(firstName);
+    }
+  }, []);
   // Dados mocados para os itens populares
   const popularItemsData = [
     {
@@ -24,7 +33,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#FEEBD6] to-[#C3EEFF]">
-      <Header userName="Kayke" avatarSrc="/assets/placeholder-avatar.png" />{" "}
+      <Header userName={userName} avatarSrc="/assets/placeholder-avatar.png" />{" "}
       {/* Placeholder avatar */}
       <main className="flex-grow px-4 py-6 space-y-6">
         <div className="text-left mb-2 ml-1">
